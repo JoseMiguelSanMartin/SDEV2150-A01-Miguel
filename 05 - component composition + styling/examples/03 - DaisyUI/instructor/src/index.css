@@ -1,2 +1,7 @@
 @import "tailwindcss";
-@plugin "daisyui";
+@plugin "daisyui" {
+  themes: all;
+}
+
+// You can make your own theme!
+// https://daisyui.com/theme-generator
