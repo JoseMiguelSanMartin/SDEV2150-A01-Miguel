@@ -14,6 +14,7 @@ const EXAMPLE_RESOURCE = {
   summary: 'Studying in a group (of people).',
   location: 'NAIT Campus',
   hours: 'Mon-Fri 08:00-13:00',
+  contact: 'niceperson@nait.ca',
   virtual: false,
   openNow: false,
 }
@@ -34,6 +35,25 @@ export default function AdminPage() {
 
   const { resources, isLoading, error, refetch } = useResources();
 
+  {/* 
+    You'll notice that the onChange -> setter syntax is a little different
+    in the bound inputs in the JSX.
+
+    First of all, we're using an object that holds all our fields instead of
+    multiple state variables (yay).
+
+    Second, remember — state variables are immutable, meaning we can't just change
+    e.g. one little property in an object; we need to completely reconstruct it
+    and somehow supply our new values/modifications while doing that.
+
+    So we use the spread operator (which works for any sequenced/serialised data type,
+    not just arrays) to pull all the properties/values of the existing object,
+    and then specifically overwrite (by supplying a more recent value) one field/property.
+
+       const newData = {...oldData, field: newValue}
+
+    where ...oldData already includes field: oldValue; we're just overwriting it with recency.
+  */}
   const [formData, setFormData] = useState(EXAMPLE_RESOURCE)
 
   return (
@@ -59,6 +79,8 @@ export default function AdminPage() {
                   type="text"
                   className="w-full rounded border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-200"
                   placeholder="Resource title"
+                  value={formData.title}
+                  onChange={(e) => setFormData({...formData, title: event.target.value})}
                 />
               </div>
 
@@ -70,6 +92,8 @@ export default function AdminPage() {
                   id="category"
                   className="w-full rounded border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-200"
                   placeholder="Resource category"
+                  value={formData.category}
+                  onChange={(e) => setFormData({...formData, category: event.target.value})}
                 >
                   {['Academic', 'Wellness', 'Financial', 'Tech'].map(
                     (label) => { 
@@ -88,6 +112,8 @@ export default function AdminPage() {
                   type="text"
                   className="w-full rounded border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-200"
                   placeholder="Resource location"
+                  value={formData.location}
+                  onChange={(e) => setFormData({...formData, location: event.target.value})}
                 />
               </div>
 
@@ -100,6 +126,8 @@ export default function AdminPage() {
                   type="text"
                   className="w-full rounded border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-200"
                   placeholder="Resource hours (e.g. Mon-Fri 08:00-13:00)"
+                  value={formData.hours}
+                  onChange={(e) => setFormData({...formData, hours: event.target.value})}
                 />
               </div>
 
@@ -112,6 +140,8 @@ export default function AdminPage() {
                   type="text"
                   className="w-full rounded border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-200"
                   placeholder="Resource contact (e.g. email@nait.ca)"
+                  value={formData.contact}
+                  onChange={(e) => setFormData({...formData, contact: event.target.value})}
                 />
               </div>
 
@@ -124,6 +154,8 @@ export default function AdminPage() {
                     id="virtual"
                     type="checkbox"
                     className="rounded border border-gray-300 text-sm"
+                    checked={formData.virtual}
+                    onChange={(e) => setFormData({...formData, virtual: event.target.checked})}
                   />
                 </div>
 
@@ -135,6 +167,8 @@ export default function AdminPage() {
                     id="open-now"
                     type="checkbox"
                     className="rounded border border-gray-300 text-sm"
+                    checked={formData.openNow}
+                    onChange={(e) => setFormData({...formData, openNow: event.target.checked})}
                   />
                 </div>
               </div>
