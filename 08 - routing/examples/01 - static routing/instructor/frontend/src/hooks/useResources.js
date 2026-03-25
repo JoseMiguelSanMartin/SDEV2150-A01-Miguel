@@ -12,7 +12,7 @@ export function useResources() {
     setError(null);
     
     // force a delay using a Promise timeout (this one is 2 seconds)
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    await new Promise((resolve) => setTimeout(resolve, 350));
     
     try {
       const res = await fetch(`${API_BASE_URL}/resources`, { signal });

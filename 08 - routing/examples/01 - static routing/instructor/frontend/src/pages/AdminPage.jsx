@@ -1,3 +1,6 @@
+// react hooks
+import { useState } from 'react';
+
 // our custom hooks
 import { useResources } from '../hooks/useResources';
 
@@ -5,7 +8,20 @@ import { useResources } from '../hooks/useResources';
 import Card from '../components/ui/Card';
 
 export default function AdminPage() {
+
+  const EXAMPLE_RESOURCE = {
+    title: 'Study Group',
+    category: 'Wellness',
+    summary: 'Studying in a group (of people).',
+    location: 'NAIT Campus',
+    hours: 'Mon-Fri 08:00-13:00',
+    virtual: false,
+    openNow: false,
+  }
+
   const { resources, isLoading, error, refetch } = useResources();
+
+  const [formData, setFormData] = useState(EXAMPLE_RESOURCE)
 
   return (
     <>
