@@ -1,5 +1,5 @@
 // react-router hooks
-import { useParams } from 'react-router';
+import { useParams, useNavigate } from 'react-router';
 
 // our custom hooks/components
 import { useResources } from '../hooks/useResources';
@@ -12,6 +12,7 @@ export default function AdminPage() {
   const { resources, addResource, isLoading, error, refetch } = useResources();
   
   const { resourceId } = useParams(); // not doing anything with this yet
+  const navigate = useNavigate();
 
   return (
     <>
@@ -44,7 +45,11 @@ export default function AdminPage() {
           <div className="card-body">
             <ul className="space-y-2">
               {resources.map((resource) => (
-                <li key={resource.id} className="rounded border border-gray-200 p-3 ">
+                <li
+                  key={resource.id}
+                  className="rounded border border-gray-200 p-3"
+                  onClick={() => { navigate(`/admin/${resource.id}`) }}
+                >
                   <p className="font-semibold">{resource.title}</p>
                   <p className="text-sm text-base-content/70">{resource.category}</p>
                 </li>
