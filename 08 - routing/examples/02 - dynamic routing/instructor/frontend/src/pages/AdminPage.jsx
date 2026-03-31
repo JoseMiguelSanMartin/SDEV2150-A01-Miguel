@@ -94,19 +94,109 @@ export default function AdminPage() {
         <Card title="Resource Form">
           <div className="card-body">
             <form onSubmit={handleCreateResource} id="frm-add-resource" className="space-y-4">
+
               <div className="space-y-1">
-                <label htmlFor="q" className="block text-sm font-medium text-gray-700">
-                  Search
+                <label htmlFor="title" className="block text-sm font-medium text-gray-700">
+                  Title
                 </label>
                 <input
-                  id="q"
+                  id="title"
                   type="text"
                   className="w-full rounded border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-200"
-                  value={formData.title}
-                  onChange={(e) => setFormData({ ...formData, title: e.target.value })}
                   placeholder="Resource title"
+                  value={formData.title}
+                  onChange={(e) => setFormData({...formData, title: event.target.value})}
                 />
               </div>
+
+              <div className="space-y-1">
+                <label htmlFor="category" className="block text-sm font-medium text-gray-700">
+                  Category
+                </label>
+                <select
+                  id="category"
+                  className="w-full rounded border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-200"
+                  placeholder="Resource category"
+                  value={formData.category}
+                  onChange={(e) => setFormData({...formData, category: event.target.value})}
+                >
+                  {['Academic', 'Wellness', 'Financial', 'Tech'].map(
+                    (label) => { 
+                      return <option value={label}>{label}</option>
+                    }
+                  )}
+                </select>
+              </div>
+
+              <div className="space-y-1">
+                <label htmlFor="location" className="block text-sm font-medium text-gray-700">
+                  Location
+                </label>
+                <input
+                  id="location"
+                  type="text"
+                  className="w-full rounded border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-200"
+                  placeholder="Resource location"
+                  value={formData.location}
+                  onChange={(e) => setFormData({...formData, location: event.target.value})}
+                />
+              </div>
+
+              <div className="space-y-1">
+                <label htmlFor="hours" className="block text-sm font-medium text-gray-700">
+                  Hours
+                </label>
+                <input
+                  id="hours"
+                  type="text"
+                  className="w-full rounded border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-200"
+                  placeholder="Resource hours (e.g. Mon-Fri 08:00-13:00)"
+                  value={formData.hours}
+                  onChange={(e) => setFormData({...formData, hours: event.target.value})}
+                />
+              </div>
+
+              <div className="space-y-1">
+                <label htmlFor="contact" className="block text-sm font-medium text-gray-700">
+                  Contact
+                </label>
+                <input
+                  id="contact"
+                  type="text"
+                  className="w-full rounded border border-gray-300 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 focus:border-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-200"
+                  placeholder="Resource contact (e.g. email@nait.ca)"
+                  value={formData.contact}
+                  onChange={(e) => setFormData({...formData, contact: event.target.value})}
+                />
+              </div>
+
+              <div className="flex gap-6">
+                <div className="space-y-1">
+                  <label htmlFor="virtual" className="block text-sm font-medium text-gray-700">
+                    Virtual (online-only)
+                  </label>
+                  <input
+                    id="virtual"
+                    type="checkbox"
+                    className="rounded border border-gray-300 text-sm"
+                    checked={formData.virtual}
+                    onChange={(e) => setFormData({...formData, virtual: event.target.checked})}
+                  />
+                </div>
+
+                <div className="space-y-1">
+                  <label htmlFor="open-now" className="block text-sm font-medium text-gray-700">
+                    Open Now
+                  </label>
+                  <input
+                    id="open-now"
+                    type="checkbox"
+                    className="rounded border border-gray-300 text-sm"
+                    checked={formData.openNow}
+                    onChange={(e) => setFormData({...formData, openNow: event.target.checked})}
+                  />
+                </div>
+              </div>  
 
               <hr className="border-gray-200" />
 
