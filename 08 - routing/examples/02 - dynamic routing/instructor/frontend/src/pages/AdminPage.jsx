@@ -9,7 +9,7 @@ import AdminForm from '../components/admin/AdminForm';
 
 export default function AdminPage() {
 
-  const { resources, addResource, isLoading, error, refetch } = useResources();
+  const { resources, isLoading, error, refetch } = useResources();
   
   const { resourceId } = useParams(); // not doing anything with this yet
   const navigate = useNavigate();
@@ -36,7 +36,7 @@ export default function AdminPage() {
         key={resourceId ?? 'new'}
         resources={resources}
         resourceId={resourceId}
-        onResourceChange={addResource}
+        refetchResources={refetch}
       />
 
 
