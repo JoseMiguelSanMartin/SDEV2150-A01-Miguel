@@ -42,8 +42,8 @@ let router = createBrowserRouter(
   [
     { path: "/", Component: App, children: [
         { index: true, Component: ResourceDirectoryPage, loader: resourceDirectoryLoader },
-        { path: "admin", Component: AdminPage, loader: adminLoader },
-        { path: "admin/:resourceId", Component: AdminPage, loader: adminLoader },
+        { path: "admin",Component: AdminPage, loader: adminLoader, action: AdminAction },
+        { path: "admin/:resourceId", Component: AdminPage, loader: adminLoader, action: AdminAction },
       ]
     }
   ]

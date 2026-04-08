@@ -1,5 +1,7 @@
 import { getResources, getResourceById } from './api/resources';
 
+
+// LOADERS ------------------------------------------------------------------------------
 export async function resourceDirectoryLoader() {
   const resources = await getResources();
   return { resources };
@@ -45,3 +47,7 @@ export async function adminLoader({ params }) {
    a common pattern in REST API design where list-like API endpoints return item summaries and
    ID-specific / by-item results are more detailed (so we *would* be doing a separate ID-specific fetch).
 */
+
+
+// ACTIONS ------------------------------------------------------------------------------
+export async function AdminAction({ request, params }) {}
