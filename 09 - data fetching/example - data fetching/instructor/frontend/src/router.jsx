@@ -1,4 +1,4 @@
-import { getResources, getResourceById } from './api/resources';
+import { API_BASE_URL, getResources, getResourceById } from './api/resources';
 
 
 // LOADERS ------------------------------------------------------------------------------
